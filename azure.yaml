@@ -1,0 +1,16 @@
+name: english-proficiency-assessment
+metadata:
+  template: todo-app-flask-mongo@0.0.1-beta
+services:
+  web:
+    project: .
+    language: python
+    host: appservice
+    hooks:
+      prebuild:
+        windows:
+          shell: pwsh
+          run: pip install -r requirements.txt
+        posix:
+          shell: sh
+          run: pip install -r requirements.txt

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Proficiency Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>English Proficiency Assessment</h1>
+            <p>Record yourself speaking English to get a CEFR-based evaluation</p>
+        </header>
+
+        <div class="assessment-section">
+            <div class="recording-controls">
+                <button id="recordBtn" class="btn btn-primary">Start Recording</button>
+                <button id="stopBtn" class="btn btn-danger" disabled>Stop Recording</button>
+                <button id="uploadBtn" class="btn btn-secondary">Upload Audio File</button>
+                <input type="file" id="fileInput" accept="audio/*" style="display: none;">
+            </div>
+
+            <div class="recording-status">
+                <div id="status">Ready to record</div>
+                <div id="timer">00:00</div>
+            </div>
+
+            <div class="audio-visualization">
+                <canvas id="waveform" width="600" height="100"></canvas>
+            </div>
+        </div>
+
+        <div class="results-section" id="resultsSection" style="display: none;">
+            <h2>Assessment Results</h2>
+
+            <div class="transcriptions">
+                <h3>Transcriptions</h3>
+                <div id="transcriptionResults"></div>
+            </div>
+
+            <div class="assessment-results">
+                <h3>CEFR Assessment</h3>
+                <div class="overall-level">
+                    <h4>Overall Level: <span id="overallLevel"></span></h4>
+                </div>
+
+                <div class="criteria-scores">
+                    <div class="score-item">
+                        <label>Pronunciation:</label>
+                        <span id="pronunciationScore"></span>
+                    </div>
+                    <div class="score-item">
+                        <label>Fluency:</label>
+                        <span id="fluencyScore"></span>
+                    </div>
+                    <div class="score-item">
+                        <label>Grammar:</label>
+                        <span id="grammarScore"></span>
+                    </div>
+                    <div class="score-item">
+                        <label>Vocabulary:</label>
+                        <span id="vocabularyScore"></span>
+                    </div>
+                </div>
+
+                <div class="feedback">
+                    <h4>Feedback</h4>
+                    <p id="feedbackText"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Processing your speech...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
